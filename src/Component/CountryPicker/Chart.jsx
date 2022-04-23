@@ -21,6 +21,7 @@ export function Chart(props){
         datasets: [{
             data: Object.values(props.dataLine.cases).map(item=>item),
             label: 'Cases',
+            backgroundColor: 'rgb(0, 150, 255,0.2)',
             borderColor: 'rgba(0,0,255,0.5)',
             fill: true
         },
@@ -28,7 +29,7 @@ export function Chart(props){
             data: Object.values(props.dataLine.deaths).map(item=>item),
             label: 'Deaths',
             borderColor: 'rgba(255,0,0,0.5)',
-            backgroundColor: 'rgba(255,0,0,0.3)',
+            backgroundColor: 'rgba(255,0,0,0.5)',
             fill: true
         }]
     }
