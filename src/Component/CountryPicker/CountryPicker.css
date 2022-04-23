@@ -1,0 +1,30 @@
+.chart-container{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin: auto;
+    padding: 4rem 0;
+    gap: 1rem;
+
+}
+.select-country{
+    width: 65%;
+    text-align: center;
+    letter-spacing: 0.1rem;
+    border: none;
+    border-bottom: 4px solid rgba(0,0,255,0.5);
+    margin-bottom: 1rem;
+    padding: 5px 0;
+}
+.select-country .dark{
+    background: transparent;
+    color: white;
+}
+@media  screen and (max-width: 1000px) {
+    .chart-container{
+        width: 100%;
+    }
+    .select-country{
+        width: 90%;
+    }
+}

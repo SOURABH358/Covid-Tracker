@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react"
+import {Cards, CountryPicker} from "./Component"
+import Header from "./Component/Header/Header"
+import "./App.css"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App(){
+    let [Curr, SetCurr] = useState('World')
+    let [toggle, SetToggle] = useState('light');
+
+    function handleCountryChange(country){
+        SetCurr(country)
+    }
+    function handleToggle(){
+        SetToggle(preValue=>{return preValue==='light'?'dark':'light'});
+        
+    }
+    return (
+        <div className={'App '+ toggle}>
+            <Header 
+            mode = {toggle}
+            handleToggle = {handleToggle}/>
+            <Cards 
+            country = {Curr}
+            />
+            <CountryPicker 
+            handleCountryChange = {handleCountryChange}
+            country = {Curr}
+            mode = {toggle}
+            />
+        </div>
+    )
 }
-
-export default App;
