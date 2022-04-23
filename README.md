@@ -15,10 +15,7 @@ The project is made in react using create react app, with the use of APIS and ot
 - gh-pages
 
 ## Screenshot
-![](Screenshot.jpeg)
-
-
-
+![image](Screenshot.jpg)
 
 **To be continued...**  
 **Author**  
