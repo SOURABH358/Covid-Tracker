@@ -1,9 +1,6 @@
 import axios from "axios"
 
-const url_history = "https://covid-193.p.rapidapi.com/history";
-const url_country = "https://covid-193.p.rapidapi.com/countries";
-const url_historical = "https://disease.sh/v3/covid-19/historical"
-
+// for barchart and card component
 export async function fetchData(country){
   if(country === 'World'){
     return await axios.get('https://disease.sh/v3/covid-19/all')
@@ -51,7 +48,7 @@ export const fetchCountries = async ()=> {
   })
 }
 
-// to get data of past 60 days for line chart
+// to get data of past 120 days for line chart
 export async function fetchLast(country){
   country = country.toLowerCase()
   if(country === 'world'){
