@@ -26,7 +26,7 @@ function Chart(props){
             ]
         }]
     }
-    const Linedata = {
+    const Linedata = line.cases?{
         labels: Object.keys(line.cases),
         datasets: [{
             data: Object.values(line.cases).map(item=>item),
@@ -42,16 +42,19 @@ function Chart(props){
             backgroundColor: 'rgba(255,0,0,0.5)',
             fill: true
         }]
-    }
+    }:null
     return (
-        <div className="chart-container">
+        line.cases?
+            <div className="chart-container">
             <Line
             data = {Linedata}
             />
             <Bar
             data = {Bardata}
             />
-        </div>)
+        </div>:
+        <p>Loading...</p>
+    )
 }
 
 export default Chart;
