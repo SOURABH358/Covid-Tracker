@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {Cards, CountryPicker} from "./Component"
+import {Cards, CountryPicker, Chart} from "./Component"
 import Header from "./Component/Header/Header"
 import "./App.css"
 
@@ -27,6 +27,8 @@ export default function App(){
             country = {Curr}
             mode = {toggle}
             />
+            <Chart
+            country = {Curr}/>
         </div>
     )
 }

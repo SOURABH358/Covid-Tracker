@@ -1,14 +1,24 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
+import { fetchData, fetchLast } from "../../api";
 import {Bar, Line} from "react-chartjs-2"
 import { Chart as ChartJS } from "chart.js/auto";
 
-export function Chart(props){
-    
+function Chart(props){
+    const [bar, SetBar] = useState({});
+    const [line, SetLine] = useState({});
+    useEffect(()=>{
+
+        async function getData(){
+            SetBar(await fetchData(props.country))
+            SetLine(await fetchLast(props.country))
+        }
+        getData()
+    },[props.country])
     const Bardata = {
-        labels: ['Active', 'Recovered', 'Death'],
+        labels: ['New','Active', 'Deaths'],
         datasets: [{
             label: props.country,
-            data: [props.active, props.recovered, props.deaths],
+            data: [bar.new, bar.active, bar.deaths],
             backgroundColor: [
                 'rgba(0,0,255,0.5)',
                 'rgba(0,255,0,0.5)',
@@ -17,16 +27,16 @@ export function Chart(props){
         }]
     }
     const Linedata = {
-        labels: Object.keys(props.dataLine.cases),
+        labels: Object.keys(line.cases),
         datasets: [{
-            data: Object.values(props.dataLine.cases).map(item=>item),
+            data: Object.values(line.cases).map(item=>item),
             label: 'Cases',
             backgroundColor: 'rgb(0, 150, 255,0.2)',
             borderColor: 'rgba(0,0,255,0.5)',
             fill: true
         },
         {
-            data: Object.values(props.dataLine.deaths).map(item=>item),
+            data: Object.values(line.deaths).map(item=>item),
             label: 'Deaths',
             borderColor: 'rgba(255,0,0,0.5)',
             backgroundColor: 'rgba(255,0,0,0.5)',
@@ -43,3 +53,5 @@ export function Chart(props){
             />
         </div>)
 }
+
+export default Chart;

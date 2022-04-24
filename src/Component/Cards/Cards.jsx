@@ -7,10 +7,9 @@ const Cards = (props) =>{
     let [state, SetState] = useState({})
     const date = new Date().toLocaleDateString('en-CA')
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-
     useEffect(()=>{
         async function getData(){
-            SetState(await fetchData(props.country,date)) 
+            SetState(await fetchData(props.country)) 
         }
         getData()
     },[props.country])
@@ -23,30 +22,30 @@ const Cards = (props) =>{
     return (
         <div className="card-container">
             <div className="card new">
-                <h2 className = "card-title">New</h2>
-                <p className = "card-data">
-                    <CountUp 
-                    start = {0}
-                    end = {state.cases.new}
-                    duration = {1.5}
-                    separator = ","
-                    />
-                </p>
-                <p className = "card-date">{new Date(state.day).toLocaleDateString('en-US',options)}</p>
-                <p className = "info">Number of new cases covid-19</p>
-            </div>
-            <div className="card active">
                 <h2 className = "card-title">Active</h2>
                 <p className = "card-data">
                     <CountUp 
                     start = {0}
-                    end = {state.cases.active}
+                    end = {state.active}
                     duration = {1.5}
                     separator = ","
                     />
                 </p>
-                <p className = "card-date">{new Date(state.day).toLocaleDateString('en-US', options)}</p>
+                <p className = "card-date">{new Date().toLocaleDateString('en-US',options)}</p>
                 <p className = "info">Number of active cases covid-19</p>
+            </div>
+            <div className="card active">
+                <h2 className = "card-title">Total Cases</h2>
+                <p className = "card-data">
+                    <CountUp 
+                    start = {0}
+                    end = {state.cases}
+                    duration = {1.5}
+                    separator = ","
+                    />
+                </p>
+                <p className = "card-date">{new Date().toLocaleDateString('en-US', options)}</p>
+                <p className = "info">Number of total cases covid-19</p>
 
             </div>
             <div className="card recovery">
@@ -54,12 +53,12 @@ const Cards = (props) =>{
                 <p className = "card-data">
                     <CountUp 
                     start = {0}
-                    end = {state.cases.recovered}
+                    end = {state.recovered}
                     duration = {1.5}
                     separator = ","
                     />
                 </p>
-                <p className = "card-date">{new Date(state.day).toLocaleDateString('en-US', options)}</p>
+                <p className = "card-date">{new Date().toLocaleDateString('en-US', options)}</p>
                 <p className = "info">Number of recoveries from covid-19</p>
 
             </div>
@@ -68,12 +67,12 @@ const Cards = (props) =>{
                 <p className = "card-data">
                     <CountUp 
                     start = {0}
-                    end = {state.deaths.total}
+                    end = {state.deaths}
                     duration = {1.5}
                     separator = ","
                     />
                 </p>
-                <p className = "card-date">{new Date(state.day).toLocaleDateString('en-US', options)}</p>
+                <p className = "card-date">{new Date().toLocaleDateString('en-US', options)}</p>
                 <p className = "info">Number of deaths from covid-19</p>
 
             </div>
