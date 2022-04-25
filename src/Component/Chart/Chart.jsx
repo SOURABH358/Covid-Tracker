@@ -6,6 +6,8 @@ import { Chart as ChartJS } from "chart.js/auto";
 function Chart(props){
     const [bar, SetBar] = useState({});
     const [line, SetLine] = useState({});
+    let preVcase = 0;
+    let preVdeath = 0;
     useEffect(()=>{
 
         async function getData(){
@@ -29,14 +31,30 @@ function Chart(props){
     const Linedata = line.cases?{
         labels: Object.keys(line.cases),
         datasets: [{
-            data: Object.values(line.cases).map(item=>item),
+            data: Object.values(line.cases).map((item,index)=>{
+                if(index===0){
+                    preVcase=item;
+                    return 0;
+                }
+                let temp = preVcase;
+                preVcase = item;
+                return item-temp;
+            }),
             label: 'Cases',
             backgroundColor: 'rgb(0, 150, 255,0.2)',
             borderColor: 'rgba(0,0,255,0.5)',
             fill: true
         },
         {
-            data: Object.values(line.deaths).map(item=>item),
+            data: Object.values(line.deaths).map((item,index)=>{
+                if(index===0){
+                    preVdeath=item;
+                    return 0;
+                }
+                let temp = preVdeath;
+                preVdeath = item;
+                return item-temp;
+            }),
             label: 'Deaths',
             borderColor: 'rgba(255,0,0,0.5)',
             backgroundColor: 'rgba(255,0,0,0.5)',
