@@ -4,17 +4,10 @@ import CountUp  from "react-countup";
 import { fetchData } from "../../api";
 
 const Cards = (props) =>{
-    let [state, SetState] = useState({})
     const date = new Date().toLocaleDateString('en-CA')
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    useEffect(()=>{
-        async function getData(){
-            SetState(await fetchData(props.country)) 
-        }
-        getData()
-    },[props.country])
     
-    if(state.cases){
+    if(props.CountryData){
     }
     else {
         return 'Loading...'
@@ -26,7 +19,7 @@ const Cards = (props) =>{
                 <p className = "card-data">
                     <CountUp 
                     start = {0}
-                    end = {state.active}
+                    end = {props.CountryData.active}
                     duration = {1.5}
                     separator = ","
                     />
@@ -39,7 +32,7 @@ const Cards = (props) =>{
                 <p className = "card-data">
                     <CountUp 
                     start = {0}
-                    end = {state.cases}
+                    end = {props.CountryData.cases}
                     duration = {1.5}
                     separator = ","
                     />
@@ -53,7 +46,7 @@ const Cards = (props) =>{
                 <p className = "card-data">
                     <CountUp 
                     start = {0}
-                    end = {state.recovered}
+                    end = {props.CountryData.recovered}
                     duration = {1.5}
                     separator = ","
                     />
@@ -67,7 +60,7 @@ const Cards = (props) =>{
                 <p className = "card-data">
                     <CountUp 
                     start = {0}
-                    end = {state.deaths}
+                    end = {props.CountryData.deaths}
                     duration = {1.5}
                     separator = ","
                     />

@@ -2,34 +2,15 @@ import axios from "axios"
 
 // for barchart and card component
 export async function fetchData(country){
+  
   if(country === 'World'){
     return await axios.get('https://disease.sh/v3/covid-19/all')
     .then(response=> response)
-    .then(({data})=>{
-      return {
-        'cases':data.cases,
-        'recovered':data.recovered,
-        'deaths':data.deaths,
-        'active':data.active,
-        'new':data.todayCases,
-        'todayDeaths':data.todayDeaths
-      }
-    })
+    .then(({data})=>data)
   }
   else{
     country = country.toLowerCase()
-    return await axios.get('https://disease.sh/v3/covid-19/countries/'+country)
-    .then(response=> response)
-    .then(({data})=>{
-      return {
-        'cases':data.cases,
-        'recovered':data.recovered,
-        'deaths':data.deaths,
-        'active':data.active,
-        'new':data.todayCases,
-        'todayDeaths':data.todayDeaths
-      }
-    })
+    return axios.get(`https://disease.sh/v3/covid-19/countries/${country}`).then(response=>response).then(({data})=>data)
   }
 }
 
@@ -42,7 +23,8 @@ export const fetchCountries = async ()=> {
     return data.map(item=>{
       return {
         'name':item.country,
-        'code':item.countryInfo.iso3
+        'code':item.countryInfo.iso3,
+        'coord':[item.countryInfo.lat, item.countryInfo.long]
       }
     })
   })

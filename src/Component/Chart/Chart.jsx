@@ -4,14 +4,12 @@ import {Bar, Line} from "react-chartjs-2"
 import { Chart as ChartJS } from "chart.js/auto";
 
 function Chart(props){
-    const [bar, SetBar] = useState({});
+    // const [bar, SetBar] = useState({});
     const [line, SetLine] = useState({});
     let preVcase = 0;
     let preVdeath = 0;
     useEffect(()=>{
-
         async function getData(){
-            SetBar(await fetchData(props.country))
             SetLine(await fetchLast(props.country))
         }
         getData()
@@ -20,7 +18,7 @@ function Chart(props){
         labels: ['New','Active', 'Deaths'],
         datasets: [{
             label: props.country,
-            data: [bar.new, bar.active, bar.deaths],
+            data: [props.CountryData.todayCases, props.CountryData.active, props.CountryData.deaths],
             backgroundColor: [
                 'rgba(0,0,255,0.5)',
                 'rgba(0,255,0,0.5)',

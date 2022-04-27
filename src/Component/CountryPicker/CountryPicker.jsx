@@ -12,17 +12,15 @@ const CountryPicker = (props) =>{
         async function getCountries(){
             SetCountries(await fetchCountries())
             SetCountries(preValue=>{
-                return [{'name':'World',code:'All'},...preValue]
+                return [{'name':'World','code':'All','coord': [34.80746, -40.4796]},...preValue]
             })
         }
         getCountries();
     },[])
-    
     const options = Countries.map((item,index)=>{
-        return <option key = {index}value = {item.name}>{item.name}</option>
+        return <option key = {index} value = {item.name}>{item.name}</option>
     })
-
-
+    
     return (
         <select name = "countries" id = "countries" className = {"select-country " + props.mode} onChange={(e)=>{props.handleCountryChange(e.target.value)}}>
             {options}
