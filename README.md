@@ -10,6 +10,7 @@ It represents data in the form of a line chart and a bar chart. Line chart shows
 The project is made in react using create react app, with the use of APIS and other js modules here is a description of all the tools used in making of this project.  
 - create-react-app
 - Chart.js
+- react-leaflet
 - react countUp
 - axios
 - [Diseases.sh](https://disease.sh/)
