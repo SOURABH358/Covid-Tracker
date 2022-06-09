@@ -5,10 +5,13 @@
     margin: auto;
     padding: 4rem 0;
     gap: 1rem;
-
+    flex-basis: 1;
+    
 }
+
 @media screen and (max-width: 1000px) {
     .chart-container{
+        padding: 0;
         width: 100%;
     }
 }

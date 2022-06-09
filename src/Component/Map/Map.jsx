@@ -27,7 +27,7 @@ export default function Map({ center, countries }) {
     }
     return (
         <div className="map" >
-            <MapContainer center={center ? center : [34.80746, -40.4796]} zoom={3}>
+            <MapContainer center={center ? center : [34.80746, -40.4796]} zoom={3} scrollWheelZoom = {false}>
                 {center ? <MyComponent /> : null}
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
