@@ -19,6 +19,7 @@ The project is made in react using create react app, with the use of APIS and ot
 ## Screenshot
 ![image](Screenshot.jpg)
 
-**To be continued...**  
-**Author**  
-Sourabh Yadav - [@sourabh358](https://github.com/SOURABH358)❤
+## Author
+GitHub - [@sourabh358](https://github.com/SOURABH358)  
+Frontend Mentor - [@sourabh358](https://www.frontendmentor.io/profile/sourabh358)
+❤ Sourabh Yadav
